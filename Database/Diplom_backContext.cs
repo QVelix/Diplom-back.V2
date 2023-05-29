@@ -364,6 +364,4 @@ public partial class Diplom_backContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-    public DbSet<Diplom_back.Models.UsersItem> UsersItem { get; set; } = default!;
 }
