@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Diplom_back.Database;
 using Diplom_back.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Diplom_back.Controllers
 {
@@ -48,6 +49,25 @@ namespace Diplom_back.Controllers
             }
 
             return user;
+        }
+
+        [HttpPost("{search}")]
+        public async Task<ActionResult<IEnumerable<User>>> SearchUser(string search)
+        {
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
+
+            var users = _context.Users.Where(u =>
+                u.Login == search || u.FirstName == search || u.FirstName + " " + u.SecondName == search);
+
+            if (users == null)
+            {
+                return NotFound();
+            }
+
+            return users.ToList();
         }
 
         // PUT: api/UserContoller/5
