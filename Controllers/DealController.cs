@@ -95,6 +95,25 @@ namespace Diplom_back.Controllers
 
             return CreatedAtAction("GetDeal", new { id = deal.Id }, deal);
         }
+        
+        [HttpPost("{search}")]
+        public async Task<ActionResult<IEnumerable<Deal>>> SearchDeal(string search)
+        {
+            if (_context.Deals == null)
+            {
+                return NotFound();
+            }
+
+            var deals = _context.Deals.Where(d =>
+                d.Name.Contains(search) || d.Number.Contains(search));
+
+            if (deals == null)
+            {
+                return NotFound();
+            }
+
+            return deals.ToList();
+        }
 
         // DELETE: api/DealContoller/5
         [HttpDelete("{id}")]

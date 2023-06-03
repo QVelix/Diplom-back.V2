@@ -60,7 +60,7 @@ namespace Diplom_back.Controllers
             }
 
             var users = _context.Users.Where(u =>
-                u.Login == search || u.FirstName == search || u.FirstName + " " + u.SecondName == search);
+                u.Login.Contains(search) || u.FirstName.Contains(search) || (u.FirstName + " " + u.SecondName).Contains(search));
 
             if (users == null)
             {

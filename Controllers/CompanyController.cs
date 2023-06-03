@@ -95,6 +95,25 @@ namespace Diplom_back.Controllers
 
             return CreatedAtAction("GetCompany", new { id = company.Id }, company);
         }
+        
+        [HttpPost("{search}")]
+        public async Task<ActionResult<IEnumerable<Company>>> SearchCompany(string search)
+        {
+            if (_context.Companies == null)
+            {
+                return NotFound();
+            }
+
+            var companies = _context.Companies.Where(c =>
+                c.ShortName.Contains(search) || c.FullName.Contains(search));
+
+            if (companies == null)
+            {
+                return NotFound();
+            }
+
+            return companies.ToList();
+        }
 
         // DELETE: api/CompanyContoller/5
         [HttpDelete("{id}")]

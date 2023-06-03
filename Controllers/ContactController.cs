@@ -95,6 +95,25 @@ namespace Diplom_back.Controllers
 
             return CreatedAtAction("GetContact", new { id = contact.Id }, contact);
         }
+        
+        [HttpPost("{search}")]
+        public async Task<ActionResult<IEnumerable<Contact>>> SearchContacts(string search)
+        {
+            if (_context.Contacts == null)
+            {
+                return NotFound();
+            }
+
+            var contacts = _context.Contacts.Where(c =>
+                c.FirstName.Contains(search) || (c.FirstName + " " + c.SecondName).Contains(search));
+
+            if (contacts == null)
+            {
+                return NotFound();
+            }
+
+            return contacts.ToList();
+        }
 
         // DELETE: api/ContactContoller/5
         [HttpDelete("{id}")]
