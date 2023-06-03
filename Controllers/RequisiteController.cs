@@ -12,55 +12,55 @@ namespace Diplom_back.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserTypeContoller : ControllerBase
+    public class RequisiteController : ControllerBase
     {
         private readonly Diplom_backContext _context;
 
-        public UserTypeContoller(Diplom_backContext context)
+        public RequisiteController(Diplom_backContext context)
         {
             _context = context;
         }
 
-        // GET: api/UserTypeContoller
+        // GET: api/RequisiteContoller
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserType>>> GetUserTypes()
+        public async Task<ActionResult<IEnumerable<Requisite>>> GetRequisites()
         {
-          if (_context.UserTypes == null)
+          if (_context.Requisites == null)
           {
               return NotFound();
           }
-            return await _context.UserTypes.ToListAsync();
+            return await _context.Requisites.ToListAsync();
         }
 
-        // GET: api/UserTypeContoller/5
+        // GET: api/RequisiteContoller/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserType>> GetUserType(int id)
+        public async Task<ActionResult<Requisite>> GetRequisite(int id)
         {
-          if (_context.UserTypes == null)
+          if (_context.Requisites == null)
           {
               return NotFound();
           }
-            var userType = await _context.UserTypes.FindAsync(id);
+            var requisite = await _context.Requisites.FindAsync(id);
 
-            if (userType == null)
+            if (requisite == null)
             {
                 return NotFound();
             }
 
-            return userType;
+            return requisite;
         }
 
-        // PUT: api/UserTypeContoller/5
+        // PUT: api/RequisiteContoller/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUserType(int id, UserType userType)
+        public async Task<IActionResult> PutRequisite(int id, Requisite requisite)
         {
-            if (id != userType.Id)
+            if (id != requisite.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(userType).State = EntityState.Modified;
+            _context.Entry(requisite).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace Diplom_back.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserTypeExists(id))
+                if (!RequisiteExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/UserTypeContoller
+        // POST: api/RequisiteContoller
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserType>> PostUserType(UserType userType)
+        public async Task<ActionResult<Requisite>> PostRequisite(Requisite requisite)
         {
-          if (_context.UserTypes == null)
+          if (_context.Requisites == null)
           {
-              return Problem("Entity set 'Diplom_backContext.UserTypes'  is null.");
+              return Problem("Entity set 'Diplom_backContext.Requisites'  is null.");
           }
-            _context.UserTypes.Add(userType);
+            _context.Requisites.Add(requisite);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUserType", new { id = userType.Id }, userType);
+            return CreatedAtAction("GetRequisite", new { id = requisite.Id }, requisite);
         }
 
-        // DELETE: api/UserTypeContoller/5
+        // DELETE: api/RequisiteContoller/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUserType(int id)
+        public async Task<IActionResult> DeleteRequisite(int id)
         {
-            if (_context.UserTypes == null)
+            if (_context.Requisites == null)
             {
                 return NotFound();
             }
-            var userType = await _context.UserTypes.FindAsync(id);
-            if (userType == null)
+            var requisite = await _context.Requisites.FindAsync(id);
+            if (requisite == null)
             {
                 return NotFound();
             }
 
-            _context.UserTypes.Remove(userType);
+            _context.Requisites.Remove(requisite);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool UserTypeExists(int id)
+        private bool RequisiteExists(int id)
         {
-            return (_context.UserTypes?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Requisites?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

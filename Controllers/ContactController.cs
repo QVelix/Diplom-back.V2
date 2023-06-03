@@ -12,55 +12,55 @@ namespace Diplom_back.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductContoller : ControllerBase
+    public class ContactController : ControllerBase
     {
         private readonly Diplom_backContext _context;
 
-        public ProductContoller(Diplom_backContext context)
+        public ContactController(Diplom_backContext context)
         {
             _context = context;
         }
 
-        // GET: api/ProductContoller
+        // GET: api/ContactContoller
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<Contact>>> GetContacts()
         {
-          if (_context.Products == null)
+          if (_context.Contacts == null)
           {
               return NotFound();
           }
-            return await _context.Products.ToListAsync();
+            return await _context.Contacts.ToListAsync();
         }
 
-        // GET: api/ProductContoller/5
+        // GET: api/ContactContoller/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<Contact>> GetContact(int id)
         {
-          if (_context.Products == null)
+          if (_context.Contacts == null)
           {
               return NotFound();
           }
-            var product = await _context.Products.FindAsync(id);
+            var contact = await _context.Contacts.FindAsync(id);
 
-            if (product == null)
+            if (contact == null)
             {
                 return NotFound();
             }
 
-            return product;
+            return contact;
         }
 
-        // PUT: api/ProductContoller/5
+        // PUT: api/ContactContoller/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<IActionResult> PutContact(int id, Contact contact)
         {
-            if (id != product.Id)
+            if (id != contact.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(product).State = EntityState.Modified;
+            _context.Entry(contact).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace Diplom_back.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(id))
+                if (!ContactExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/ProductContoller
+        // POST: api/ContactContoller
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        public async Task<ActionResult<Contact>> PostContact(Contact contact)
         {
-          if (_context.Products == null)
+          if (_context.Contacts == null)
           {
-              return Problem("Entity set 'Diplom_backContext.Products'  is null.");
+              return Problem("Entity set 'Diplom_backContext.Contacts'  is null.");
           }
-            _context.Products.Add(product);
+            _context.Contacts.Add(contact);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+            return CreatedAtAction("GetContact", new { id = contact.Id }, contact);
         }
 
-        // DELETE: api/ProductContoller/5
+        // DELETE: api/ContactContoller/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        public async Task<IActionResult> DeleteContact(int id)
         {
-            if (_context.Products == null)
+            if (_context.Contacts == null)
             {
                 return NotFound();
             }
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
+            var contact = await _context.Contacts.FindAsync(id);
+            if (contact == null)
             {
                 return NotFound();
             }
 
-            _context.Products.Remove(product);
+            _context.Contacts.Remove(contact);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ProductExists(int id)
+        private bool ContactExists(int id)
         {
-            return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Contacts?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

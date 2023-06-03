@@ -12,55 +12,55 @@ namespace Diplom_back.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ContactContoller : ControllerBase
+    public class DealController : ControllerBase
     {
         private readonly Diplom_backContext _context;
 
-        public ContactContoller(Diplom_backContext context)
+        public DealController(Diplom_backContext context)
         {
             _context = context;
         }
 
-        // GET: api/ContactContoller
+        // GET: api/DealContoller
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Contact>>> GetContacts()
+        public async Task<ActionResult<IEnumerable<Deal>>> GetDeals()
         {
-          if (_context.Contacts == null)
+          if (_context.Deals == null)
           {
               return NotFound();
           }
-            return await _context.Contacts.ToListAsync();
+            return await _context.Deals.ToListAsync();
         }
 
-        // GET: api/ContactContoller/5
+        // GET: api/DealContoller/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Contact>> GetContact(int id)
+        public async Task<ActionResult<Deal>> GetDeal(int id)
         {
-          if (_context.Contacts == null)
+          if (_context.Deals == null)
           {
               return NotFound();
           }
-            var contact = await _context.Contacts.FindAsync(id);
+            var deal = await _context.Deals.FindAsync(id);
 
-            if (contact == null)
+            if (deal == null)
             {
                 return NotFound();
             }
 
-            return contact;
+            return deal;
         }
 
-        // PUT: api/ContactContoller/5
+        // PUT: api/DealContoller/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutContact(int id, Contact contact)
+        public async Task<IActionResult> PutDeal(int id, Deal deal)
         {
-            if (id != contact.Id)
+            if (id != deal.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(contact).State = EntityState.Modified;
+            _context.Entry(deal).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace Diplom_back.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ContactExists(id))
+                if (!DealExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/ContactContoller
+        // POST: api/DealContoller
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Contact>> PostContact(Contact contact)
+        public async Task<ActionResult<Deal>> PostDeal(Deal deal)
         {
-          if (_context.Contacts == null)
+          if (_context.Deals == null)
           {
-              return Problem("Entity set 'Diplom_backContext.Contacts'  is null.");
+              return Problem("Entity set 'Diplom_backContext.Deals'  is null.");
           }
-            _context.Contacts.Add(contact);
+            _context.Deals.Add(deal);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetContact", new { id = contact.Id }, contact);
+            return CreatedAtAction("GetDeal", new { id = deal.Id }, deal);
         }
 
-        // DELETE: api/ContactContoller/5
+        // DELETE: api/DealContoller/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteContact(int id)
+        public async Task<IActionResult> DeleteDeal(int id)
         {
-            if (_context.Contacts == null)
+            if (_context.Deals == null)
             {
                 return NotFound();
             }
-            var contact = await _context.Contacts.FindAsync(id);
-            if (contact == null)
+            var deal = await _context.Deals.FindAsync(id);
+            if (deal == null)
             {
                 return NotFound();
             }
 
-            _context.Contacts.Remove(contact);
+            _context.Deals.Remove(deal);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool ContactExists(int id)
+        private bool DealExists(int id)
         {
-            return (_context.Contacts?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Deals?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

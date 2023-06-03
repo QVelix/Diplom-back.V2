@@ -12,11 +12,11 @@ namespace Diplom_back.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompanyTypeContoller : ControllerBase
+    public class CompanyTypeController : ControllerBase
     {
         private readonly Diplom_backContext _context;
 
-        public CompanyTypeContoller(Diplom_backContext context)
+        public CompanyTypeController(Diplom_backContext context)
         {
             _context = context;
         }

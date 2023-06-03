@@ -12,55 +12,55 @@ namespace Diplom_back.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DealContoller : ControllerBase
+    public class UserTypeController : ControllerBase
     {
         private readonly Diplom_backContext _context;
 
-        public DealContoller(Diplom_backContext context)
+        public UserTypeController(Diplom_backContext context)
         {
             _context = context;
         }
 
-        // GET: api/DealContoller
+        // GET: api/UserTypeContoller
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Deal>>> GetDeals()
+        public async Task<ActionResult<IEnumerable<UserType>>> GetUserTypes()
         {
-          if (_context.Deals == null)
+          if (_context.UserTypes == null)
           {
               return NotFound();
           }
-            return await _context.Deals.ToListAsync();
+            return await _context.UserTypes.ToListAsync();
         }
 
-        // GET: api/DealContoller/5
+        // GET: api/UserTypeContoller/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Deal>> GetDeal(int id)
+        public async Task<ActionResult<UserType>> GetUserType(int id)
         {
-          if (_context.Deals == null)
+          if (_context.UserTypes == null)
           {
               return NotFound();
           }
-            var deal = await _context.Deals.FindAsync(id);
+            var userType = await _context.UserTypes.FindAsync(id);
 
-            if (deal == null)
+            if (userType == null)
             {
                 return NotFound();
             }
 
-            return deal;
+            return userType;
         }
 
-        // PUT: api/DealContoller/5
+        // PUT: api/UserTypeContoller/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDeal(int id, Deal deal)
+        public async Task<IActionResult> PutUserType(int id, UserType userType)
         {
-            if (id != deal.Id)
+            if (id != userType.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(deal).State = EntityState.Modified;
+            _context.Entry(userType).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace Diplom_back.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DealExists(id))
+                if (!UserTypeExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/DealContoller
+        // POST: api/UserTypeContoller
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Deal>> PostDeal(Deal deal)
+        public async Task<ActionResult<UserType>> PostUserType(UserType userType)
         {
-          if (_context.Deals == null)
+          if (_context.UserTypes == null)
           {
-              return Problem("Entity set 'Diplom_backContext.Deals'  is null.");
+              return Problem("Entity set 'Diplom_backContext.UserTypes'  is null.");
           }
-            _context.Deals.Add(deal);
+            _context.UserTypes.Add(userType);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDeal", new { id = deal.Id }, deal);
+            return CreatedAtAction("GetUserType", new { id = userType.Id }, userType);
         }
 
-        // DELETE: api/DealContoller/5
+        // DELETE: api/UserTypeContoller/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDeal(int id)
+        public async Task<IActionResult> DeleteUserType(int id)
         {
-            if (_context.Deals == null)
+            if (_context.UserTypes == null)
             {
                 return NotFound();
             }
-            var deal = await _context.Deals.FindAsync(id);
-            if (deal == null)
+            var userType = await _context.UserTypes.FindAsync(id);
+            if (userType == null)
             {
                 return NotFound();
             }
 
-            _context.Deals.Remove(deal);
+            _context.UserTypes.Remove(userType);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool DealExists(int id)
+        private bool UserTypeExists(int id)
         {
-            return (_context.Deals?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.UserTypes?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -12,55 +12,55 @@ namespace Diplom_back.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RequisiteContoller : ControllerBase
+    public class ProductController : ControllerBase
     {
         private readonly Diplom_backContext _context;
 
-        public RequisiteContoller(Diplom_backContext context)
+        public ProductController(Diplom_backContext context)
         {
             _context = context;
         }
 
-        // GET: api/RequisiteContoller
+        // GET: api/ProductContoller
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Requisite>>> GetRequisites()
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-          if (_context.Requisites == null)
+          if (_context.Products == null)
           {
               return NotFound();
           }
-            return await _context.Requisites.ToListAsync();
+            return await _context.Products.ToListAsync();
         }
 
-        // GET: api/RequisiteContoller/5
+        // GET: api/ProductContoller/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Requisite>> GetRequisite(int id)
+        public async Task<ActionResult<Product>> GetProduct(int id)
         {
-          if (_context.Requisites == null)
+          if (_context.Products == null)
           {
               return NotFound();
           }
-            var requisite = await _context.Requisites.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
 
-            if (requisite == null)
+            if (product == null)
             {
                 return NotFound();
             }
 
-            return requisite;
+            return product;
         }
 
-        // PUT: api/RequisiteContoller/5
+        // PUT: api/ProductContoller/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRequisite(int id, Requisite requisite)
+        public async Task<IActionResult> PutProduct(int id, Product product)
         {
-            if (id != requisite.Id)
+            if (id != product.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(requisite).State = EntityState.Modified;
+            _context.Entry(product).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace Diplom_back.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RequisiteExists(id))
+                if (!ProductExists(id))
                 {
                     return NotFound();
                 }
@@ -81,44 +81,44 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/RequisiteContoller
+        // POST: api/ProductContoller
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Requisite>> PostRequisite(Requisite requisite)
+        public async Task<ActionResult<Product>> PostProduct(Product product)
         {
-          if (_context.Requisites == null)
+          if (_context.Products == null)
           {
-              return Problem("Entity set 'Diplom_backContext.Requisites'  is null.");
+              return Problem("Entity set 'Diplom_backContext.Products'  is null.");
           }
-            _context.Requisites.Add(requisite);
+            _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRequisite", new { id = requisite.Id }, requisite);
+            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
-        // DELETE: api/RequisiteContoller/5
+        // DELETE: api/ProductContoller/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRequisite(int id)
+        public async Task<IActionResult> DeleteProduct(int id)
         {
-            if (_context.Requisites == null)
+            if (_context.Products == null)
             {
                 return NotFound();
             }
-            var requisite = await _context.Requisites.FindAsync(id);
-            if (requisite == null)
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
             {
                 return NotFound();
             }
 
-            _context.Requisites.Remove(requisite);
+            _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool RequisiteExists(int id)
+        private bool ProductExists(int id)
         {
-            return (_context.Requisites?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
