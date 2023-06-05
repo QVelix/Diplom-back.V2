@@ -21,7 +21,7 @@ namespace Diplom_back.Controllers
             _context = context;
         }
 
-        // GET: api/BankRequisiteContoller
+        // GET: api/BankRequisite
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BankRequisite>>> GetBankRequisites()
         {
@@ -32,7 +32,7 @@ namespace Diplom_back.Controllers
             return await _context.BankRequisites.ToListAsync();
         }
 
-        // GET: api/BankRequisiteContoller/5
+        // GET: api/BankRequisite/5
         [HttpGet("{id}")]
         public async Task<ActionResult<BankRequisite>> GetBankRequisite(int id)
         {
@@ -50,7 +50,7 @@ namespace Diplom_back.Controllers
             return bankRequisite;
         }
 
-        // PUT: api/BankRequisiteContoller/5
+        // PUT: api/BankRequisite/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBankRequisite(int id, BankRequisite bankRequisite)
@@ -81,7 +81,7 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/BankRequisiteContoller
+        // POST: api/BankRequisite
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<BankRequisite>> PostBankRequisite(BankRequisite bankRequisite)
@@ -96,7 +96,7 @@ namespace Diplom_back.Controllers
             return CreatedAtAction("GetBankRequisite", new { id = bankRequisite.Id }, bankRequisite);
         }
 
-        // DELETE: api/BankRequisiteContoller/5
+        // DELETE: api/BankRequisite/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBankRequisite(int id)
         {
