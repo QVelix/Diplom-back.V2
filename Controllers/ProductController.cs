@@ -21,7 +21,7 @@ namespace Diplom_back.Controllers
             _context = context;
         }
 
-        // GET: api/ProductContoller
+        // GET: api/Product
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
@@ -32,7 +32,7 @@ namespace Diplom_back.Controllers
             return await _context.Products.ToListAsync();
         }
 
-        // GET: api/ProductContoller/5
+        // GET: api/Product/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
@@ -50,7 +50,7 @@ namespace Diplom_back.Controllers
             return product;
         }
 
-        // PUT: api/ProductContoller/5
+        // PUT: api/Product/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
@@ -81,7 +81,7 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/ProductContoller
+        // POST: api/Product
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
@@ -96,7 +96,7 @@ namespace Diplom_back.Controllers
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
-        // DELETE: api/ProductContoller/5
+        // DELETE: api/Product/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {

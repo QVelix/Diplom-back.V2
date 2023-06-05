@@ -21,7 +21,7 @@ namespace Diplom_back.Controllers
             _context = context;
         }
 
-        // GET: api/RequisiteTypeContoller
+        // GET: api/RequisiteType
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RequisiteType>>> GetRequisiteTypes()
         {
@@ -32,7 +32,7 @@ namespace Diplom_back.Controllers
             return await _context.RequisiteTypes.ToListAsync();
         }
 
-        // GET: api/RequisiteTypeContoller/5
+        // GET: api/RequisiteType/5
         [HttpGet("{id}")]
         public async Task<ActionResult<RequisiteType>> GetRequisiteType(int id)
         {
@@ -50,7 +50,7 @@ namespace Diplom_back.Controllers
             return requisiteType;
         }
 
-        // PUT: api/RequisiteTypeContoller/5
+        // PUT: api/RequisiteType/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRequisiteType(int id, RequisiteType requisiteType)
@@ -81,7 +81,7 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/RequisiteTypeContoller
+        // POST: api/RequisiteType
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<RequisiteType>> PostRequisiteType(RequisiteType requisiteType)
@@ -96,7 +96,7 @@ namespace Diplom_back.Controllers
             return CreatedAtAction("GetRequisiteType", new { id = requisiteType.Id }, requisiteType);
         }
 
-        // DELETE: api/RequisiteTypeContoller/5
+        // DELETE: api/RequisiteType/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRequisiteType(int id)
         {

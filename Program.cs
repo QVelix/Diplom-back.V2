@@ -1,7 +1,7 @@
 using System.Configuration;
 using Diplom_back.Database;
 using Microsoft.EntityFrameworkCore;
-using Diplom_back.Models;
+//using Diplom_back.Models;
 using MySqlConnector;
 using System.Net;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -21,19 +21,19 @@ builder.Services.AddDbContext<Diplom_backContext>(opt =>
     )
 );
 
-/*builder.Services.Configure<ForwardedHeadersOptions>(options =>
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
-});*/
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 

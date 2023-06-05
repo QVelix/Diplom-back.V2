@@ -21,7 +21,7 @@ namespace Diplom_back.Controllers
             _context = context;
         }
 
-        // GET: api/ContactContoller
+        // GET: api/Contact
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Contact>>> GetContacts()
         {
@@ -32,7 +32,7 @@ namespace Diplom_back.Controllers
             return await _context.Contacts.ToListAsync();
         }
 
-        // GET: api/ContactContoller/5
+        // GET: api/Contact/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Contact>> GetContact(int id)
         {
@@ -50,7 +50,7 @@ namespace Diplom_back.Controllers
             return contact;
         }
 
-        // PUT: api/ContactContoller/5
+        // PUT: api/Contact/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutContact(int id, Contact contact)
@@ -81,7 +81,7 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/ContactContoller
+        // POST: api/Contact
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Contact>> PostContact(Contact contact)
@@ -95,27 +95,8 @@ namespace Diplom_back.Controllers
 
             return CreatedAtAction("GetContact", new { id = contact.Id }, contact);
         }
-        
-        [HttpPost("{search}")]
-        public async Task<ActionResult<IEnumerable<Contact>>> SearchContacts(string search)
-        {
-            if (_context.Contacts == null)
-            {
-                return NotFound();
-            }
 
-            var contacts = _context.Contacts.Where(c =>
-                c.FirstName.Contains(search) || (c.FirstName + " " + c.SecondName).Contains(search));
-
-            if (contacts == null)
-            {
-                return NotFound();
-            }
-
-            return contacts.ToList();
-        }
-
-        // DELETE: api/ContactContoller/5
+        // DELETE: api/Contact/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteContact(int id)
         {

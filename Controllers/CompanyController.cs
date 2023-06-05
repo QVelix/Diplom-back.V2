@@ -21,7 +21,7 @@ namespace Diplom_back.Controllers
             _context = context;
         }
 
-        // GET: api/CompanyContoller
+        // GET: api/Company
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Company>>> GetCompanies()
         {
@@ -32,7 +32,7 @@ namespace Diplom_back.Controllers
             return await _context.Companies.ToListAsync();
         }
 
-        // GET: api/CompanyContoller/5
+        // GET: api/Company/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Company>> GetCompany(int id)
         {
@@ -50,7 +50,7 @@ namespace Diplom_back.Controllers
             return company;
         }
 
-        // PUT: api/CompanyContoller/5
+        // PUT: api/Company/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCompany(int id, Company company)
@@ -81,7 +81,7 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/CompanyContoller
+        // POST: api/Company
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Company>> PostCompany(Company company)
@@ -95,27 +95,8 @@ namespace Diplom_back.Controllers
 
             return CreatedAtAction("GetCompany", new { id = company.Id }, company);
         }
-        
-        [HttpPost("{search}")]
-        public async Task<ActionResult<IEnumerable<Company>>> SearchCompany(string search)
-        {
-            if (_context.Companies == null)
-            {
-                return NotFound();
-            }
 
-            var companies = _context.Companies.Where(c =>
-                c.ShortName.Contains(search) || c.FullName.Contains(search));
-
-            if (companies == null)
-            {
-                return NotFound();
-            }
-
-            return companies.ToList();
-        }
-
-        // DELETE: api/CompanyContoller/5
+        // DELETE: api/Company/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompany(int id)
         {

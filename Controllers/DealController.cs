@@ -21,7 +21,7 @@ namespace Diplom_back.Controllers
             _context = context;
         }
 
-        // GET: api/DealContoller
+        // GET: api/Deal
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Deal>>> GetDeals()
         {
@@ -32,7 +32,7 @@ namespace Diplom_back.Controllers
             return await _context.Deals.ToListAsync();
         }
 
-        // GET: api/DealContoller/5
+        // GET: api/Deal/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Deal>> GetDeal(int id)
         {
@@ -50,7 +50,7 @@ namespace Diplom_back.Controllers
             return deal;
         }
 
-        // PUT: api/DealContoller/5
+        // PUT: api/Deal/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDeal(int id, Deal deal)
@@ -81,7 +81,7 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/DealContoller
+        // POST: api/Deal
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Deal>> PostDeal(Deal deal)
@@ -95,27 +95,8 @@ namespace Diplom_back.Controllers
 
             return CreatedAtAction("GetDeal", new { id = deal.Id }, deal);
         }
-        
-        [HttpPost("{search}")]
-        public async Task<ActionResult<IEnumerable<Deal>>> SearchDeal(string search)
-        {
-            if (_context.Deals == null)
-            {
-                return NotFound();
-            }
 
-            var deals = _context.Deals.Where(d =>
-                d.Name.Contains(search) || d.Number.Contains(search));
-
-            if (deals == null)
-            {
-                return NotFound();
-            }
-
-            return deals.ToList();
-        }
-
-        // DELETE: api/DealContoller/5
+        // DELETE: api/Deal/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDeal(int id)
         {

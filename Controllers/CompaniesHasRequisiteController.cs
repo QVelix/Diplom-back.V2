@@ -21,7 +21,7 @@ namespace Diplom_back.Controllers
             _context = context;
         }
 
-        // GET: api/CompaniesHasRequisiteContoller
+        // GET: api/CompaniesHasRequisite
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CompaniesHasRequisite>>> GetCompaniesHasRequisites()
         {
@@ -32,7 +32,7 @@ namespace Diplom_back.Controllers
             return await _context.CompaniesHasRequisites.ToListAsync();
         }
 
-        // GET: api/CompaniesHasRequisiteContoller/5
+        // GET: api/CompaniesHasRequisite/5
         [HttpGet("{id}")]
         public async Task<ActionResult<CompaniesHasRequisite>> GetCompaniesHasRequisite(int id)
         {
@@ -50,7 +50,7 @@ namespace Diplom_back.Controllers
             return companiesHasRequisite;
         }
 
-        // PUT: api/CompaniesHasRequisiteContoller/5
+        // PUT: api/CompaniesHasRequisite/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCompaniesHasRequisite(int id, CompaniesHasRequisite companiesHasRequisite)
@@ -81,7 +81,7 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/CompaniesHasRequisiteContoller
+        // POST: api/CompaniesHasRequisite
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<CompaniesHasRequisite>> PostCompaniesHasRequisite(CompaniesHasRequisite companiesHasRequisite)
@@ -110,7 +110,7 @@ namespace Diplom_back.Controllers
             return CreatedAtAction("GetCompaniesHasRequisite", new { id = companiesHasRequisite.CompaniesId }, companiesHasRequisite);
         }
 
-        // DELETE: api/CompaniesHasRequisiteContoller/5
+        // DELETE: api/CompaniesHasRequisite/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompaniesHasRequisite(int id)
         {

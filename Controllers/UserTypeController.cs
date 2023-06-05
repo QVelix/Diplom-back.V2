@@ -21,7 +21,7 @@ namespace Diplom_back.Controllers
             _context = context;
         }
 
-        // GET: api/UserTypeContoller
+        // GET: api/UserType
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserType>>> GetUserTypes()
         {
@@ -32,7 +32,7 @@ namespace Diplom_back.Controllers
             return await _context.UserTypes.ToListAsync();
         }
 
-        // GET: api/UserTypeContoller/5
+        // GET: api/UserType/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UserType>> GetUserType(int id)
         {
@@ -50,7 +50,7 @@ namespace Diplom_back.Controllers
             return userType;
         }
 
-        // PUT: api/UserTypeContoller/5
+        // PUT: api/UserType/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUserType(int id, UserType userType)
@@ -81,7 +81,7 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/UserTypeContoller
+        // POST: api/UserType
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<UserType>> PostUserType(UserType userType)
@@ -96,7 +96,7 @@ namespace Diplom_back.Controllers
             return CreatedAtAction("GetUserType", new { id = userType.Id }, userType);
         }
 
-        // DELETE: api/UserTypeContoller/5
+        // DELETE: api/UserType/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUserType(int id)
         {

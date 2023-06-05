@@ -21,7 +21,7 @@ namespace Diplom_back.Controllers
             _context = context;
         }
 
-        // GET: api/CompanyTypeContoller
+        // GET: api/CompanyType
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CompanyType>>> GetCompanyTypes()
         {
@@ -32,7 +32,7 @@ namespace Diplom_back.Controllers
             return await _context.CompanyTypes.ToListAsync();
         }
 
-        // GET: api/CompanyTypeContoller/5
+        // GET: api/CompanyType/5
         [HttpGet("{id}")]
         public async Task<ActionResult<CompanyType>> GetCompanyType(int id)
         {
@@ -50,7 +50,7 @@ namespace Diplom_back.Controllers
             return companyType;
         }
 
-        // PUT: api/CompanyTypeContoller/5
+        // PUT: api/CompanyType/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCompanyType(int id, CompanyType companyType)
@@ -81,7 +81,7 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/CompanyTypeContoller
+        // POST: api/CompanyType
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<CompanyType>> PostCompanyType(CompanyType companyType)
@@ -96,7 +96,7 @@ namespace Diplom_back.Controllers
             return CreatedAtAction("GetCompanyType", new { id = companyType.Id }, companyType);
         }
 
-        // DELETE: api/CompanyTypeContoller/5
+        // DELETE: api/CompanyType/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCompanyType(int id)
         {

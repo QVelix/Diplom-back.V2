@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Diplom_back.Database;
 using Diplom_back.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Diplom_back.Controllers
 {
@@ -22,7 +21,7 @@ namespace Diplom_back.Controllers
             _context = context;
         }
 
-        // GET: api/UserContoller
+        // GET: api/User
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
@@ -33,7 +32,7 @@ namespace Diplom_back.Controllers
             return await _context.Users.ToListAsync();
         }
 
-        // GET: api/UserContoller/5
+        // GET: api/User/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -51,26 +50,7 @@ namespace Diplom_back.Controllers
             return user;
         }
 
-        [HttpPost("{search}")]
-        public async Task<ActionResult<IEnumerable<User>>> SearchUser(string search)
-        {
-            if (_context.Users == null)
-            {
-                return NotFound();
-            }
-
-            var users = _context.Users.Where(u =>
-                u.Login.Contains(search) || u.FirstName.Contains(search) || (u.FirstName + " " + u.SecondName).Contains(search));
-
-            if (users == null)
-            {
-                return NotFound();
-            }
-
-            return users.ToList();
-        }
-
-        // PUT: api/UserContoller/5
+        // PUT: api/User/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
@@ -101,7 +81,7 @@ namespace Diplom_back.Controllers
             return NoContent();
         }
 
-        // POST: api/UserContoller
+        // POST: api/User
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
@@ -116,7 +96,7 @@ namespace Diplom_back.Controllers
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-        // DELETE: api/UserContoller/5
+        // DELETE: api/User/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
