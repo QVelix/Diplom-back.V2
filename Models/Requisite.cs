@@ -21,9 +21,11 @@ public partial class Requisite
 
     public int RequisiteTypesId { get; set; }
 
-    public virtual ICollection<CompaniesHasRequisite> CompaniesHasRequisites { get; set; } = new List<CompaniesHasRequisite>();
-
-    public virtual RequisiteType RequisiteTypes { get; set; } = null!;
+    public int CompaniesId { get; set; }
 
     public virtual ICollection<BankRequisite> BankRequisites { get; set; } = new List<BankRequisite>();
+
+    public virtual Company Companies { get; set; } = null!;
+
+    public virtual RequisiteType RequisiteTypes { get; set; } = null!;
 }

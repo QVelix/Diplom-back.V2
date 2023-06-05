@@ -17,17 +17,17 @@ public partial class Deal
 
     public DateTime? CloseDate { get; set; }
 
+    public int UsersId { get; set; }
+
     public int ContactsId { get; set; }
 
     public int CompaniesId { get; set; }
 
-    public int CompaniesCompanyTypesId { get; set; }
+    public virtual Company Companies { get; set; } = null!;
 
-    public int Responsible { get; set; }
+    public virtual Contact Contacts { get; set; } = null!;
 
-    public int UsersUserTypesId { get; set; }
-
-    public virtual User User { get; set; } = null!;
+    public virtual User Users { get; set; } = null!;
 
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

@@ -17,13 +17,13 @@ public partial class Contact
 
     public string? PersonalPhone { get; set; }
 
+    public int UsersId { get; set; }
+
     public int CompaniesId { get; set; }
 
-    public int CompaniesCompanyTypesId { get; set; }
+    public virtual Company Companies { get; set; } = null!;
 
-    public int Responsible { get; set; }
+    public virtual ICollection<Deal> Deals { get; set; } = new List<Deal>();
 
-    public int UsersUserTypesId { get; set; }
-
-    public virtual User User { get; set; } = null!;
+    public virtual User Users { get; set; } = null!;
 }

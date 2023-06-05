@@ -19,5 +19,7 @@ public partial class BankRequisite
 
     public string Ks { get; set; } = null!;
 
-    public virtual ICollection<Requisite> Requisites { get; set; } = new List<Requisite>();
+    public int RequisitesId { get; set; }
+
+    public virtual Requisite Requisites { get; set; } = null!;
 }
