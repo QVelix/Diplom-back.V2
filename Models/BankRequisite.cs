@@ -19,7 +19,5 @@ public partial class BankRequisite
 
     public string Ks { get; set; } = null!;
 
-    public int RequisitesId { get; set; }
-
-    public virtual Requisite Requisites { get; set; } = null!;
+    public int RequisiteId { get; set; }
 }

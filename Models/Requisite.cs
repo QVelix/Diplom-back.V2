@@ -19,13 +19,7 @@ public partial class Requisite
 
     public string? Okpo { get; set; }
 
-    public int RequisiteTypesId { get; set; }
+    public int CompanyId { get; set; }
 
-    public int CompaniesId { get; set; }
-
-    public virtual ICollection<BankRequisite> BankRequisites { get; set; } = new List<BankRequisite>();
-
-    public virtual Company Companies { get; set; } = null!;
-
-    public virtual RequisiteType RequisiteTypes { get; set; } = null!;
+    public int RequisiteTypeId { get; set; }
 }

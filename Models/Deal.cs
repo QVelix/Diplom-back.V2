@@ -17,17 +17,9 @@ public partial class Deal
 
     public DateTime? CloseDate { get; set; }
 
-    public int UsersId { get; set; }
+    public int UserId { get; set; }
 
-    public int ContactsId { get; set; }
+    public int? CompanyId { get; set; }
 
-    public int CompaniesId { get; set; }
-
-    public virtual Company Companies { get; set; } = null!;
-
-    public virtual Contact Contacts { get; set; } = null!;
-
-    public virtual User Users { get; set; } = null!;
-
-    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+    public int? ContactId { get; set; }
 }

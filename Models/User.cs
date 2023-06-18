@@ -23,13 +23,5 @@ public partial class User
 
     public string? PersonalPhone { get; set; }
 
-    public int UserTypesId { get; set; }
-
-    public virtual ICollection<Company> Companies { get; set; } = new List<Company>();
-
-    public virtual ICollection<Contact> Contacts { get; set; } = new List<Contact>();
-
-    public virtual ICollection<Deal> Deals { get; set; } = new List<Deal>();
-
-    public virtual UserType UserTypes { get; set; } = null!;
+    public int? UserTypesId { get; set; }
 }

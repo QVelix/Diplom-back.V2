@@ -15,17 +15,7 @@ public partial class Company
 
     public string? Email { get; set; }
 
-    public int UsersId { get; set; }
+    public int CompanyTypeId { get; set; }
 
-    public int CompanyTypesId { get; set; }
-
-    public virtual CompanyType CompanyTypes { get; set; } = null!;
-
-    public virtual ICollection<Contact> Contacts { get; set; } = new List<Contact>();
-
-    public virtual ICollection<Deal> Deals { get; set; } = new List<Deal>();
-
-    public virtual ICollection<Requisite> Requisites { get; set; } = new List<Requisite>();
-
-    public virtual User Users { get; set; } = null!;
+    public int UserId { get; set; }
 }

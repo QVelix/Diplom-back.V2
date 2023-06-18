@@ -17,13 +17,7 @@ public partial class Contact
 
     public string? PersonalPhone { get; set; }
 
-    public int UsersId { get; set; }
+    public int? CompanyId { get; set; }
 
-    public int CompaniesId { get; set; }
-
-    public virtual Company Companies { get; set; } = null!;
-
-    public virtual ICollection<Deal> Deals { get; set; } = new List<Deal>();
-
-    public virtual User Users { get; set; } = null!;
+    public int UserId { get; set; }
 }

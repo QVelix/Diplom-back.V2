@@ -10,6 +10,4 @@ public partial class Product
     public string Name { get; set; } = null!;
 
     public decimal Price { get; set; }
-
-    public virtual ICollection<Deal> Deals { get; set; } = new List<Deal>();
 }
