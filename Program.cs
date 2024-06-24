@@ -5,8 +5,19 @@ using Diplom_back.Models;
 using MySqlConnector;
 using System.Net;
 using Microsoft.AspNetCore.HttpOverrides;
+using System.Web.Http.Cors;
+
+// var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+// var cors = new EnableCorsAttribute("*","*","*");
 
 var builder = WebApplication.CreateBuilder(args);
+
+// builder.Services.AddCors(options =>{
+//     options.AddPolicy(name: MyAllowSpecificOrigins, policy=>{
+//         policy.WithOrigins("*");
+//     });
+// });
 
 // Add services to the container.
 
@@ -40,6 +51,8 @@ app.UseHttpsRedirection();
 app.UseForwardedHeaders(new ForwardedHeadersOptions{
     ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
 });
+
+// app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
